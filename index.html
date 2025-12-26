@@ -10,27 +10,179 @@
         <!-- https://www.flaticon.com/free-icons/weather" Weather icons created by iconixar - Flaticon -->
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg bg-light shadow">
+        <main>
+            <nav class="navbar navbar-expand-lg bg-light">
+                <div class="container-fluid shadow">
+                    <a class="navbar-brand" href="#"><img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/rainy-1-day.svg" alt="logo temporaneo de pagina web, un solo tapado por una nube con leves gotas cayendo"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#">Busca tu ciudad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Acerca de</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
             <div class="container-fluid">
-                <a class="navbar-brand h1" href="#">Estacion Meteorologica</a>
-                <button class="navbar-toggler" type="button" data-bs-collapse="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#" aria-current="page">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Busca tu ciudad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Acerca de</a>
-                        </li>
-                    </ul>
+                <h1>Clima del mundo</h1>
+                <p>
+                    Los climas seran valores predeterminados en forma de ejemplo, la pagina contara con otra manera de visualizar los valores verdaderos del clima en tiempo real mas adelante.
+                </p>
+            </div>
+            <div class="container-card row row-cols-1 row-cols-md-2 row-cols-lg-5 g-3">
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Santiago" height="150px" width="150px">
+                        <div class="card-header">
+                            Santiago
+                        </div>
+                        <div class="card-body">
+                            27°C <br>
+                            <hr class="my-2">
+                            Soleado
+                        </div>
+                    </div>
+                </div>
+                 <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Nueva York" height="150px" width="150px">
+                        <div class="card-header">
+                            New York
+                        </div>
+                        <div class="card-body">
+                            14°C <br>
+                            <hr class="my-2">
+                            Nuboso
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/drizzle.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Los Angeles" height="150px" width="150px">
+                        <div class="card-header">
+                            Los Angeles
+                        </div>
+                        <div class="card-body">
+                            17°C <br>
+                            <hr class="my-2">
+                            Lluvia leve
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/extreme-rain.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Londres" height="150px" width="150px">
+                        <div class="card-header">
+                            London
+                        </div>
+                        <div class="card-body">
+                            15°C <br>
+                            <hr class="my-2">
+                            Lluvia
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/snow.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Tokyo" height="150px" width="150px">
+                        <div class="card-header">
+                            Tokyo
+                        </div>
+                        <div class="card-body">
+                            12°C <br>
+                            <hr class="my-2">
+                            Nieve
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Los Angeles" height="150px" width="150px">
+                        <div class="card-header">
+                            Paris
+                        </div>
+                        <div class="card-body">
+                            15°C <br>
+                            <hr class="my-2">
+                            Nuboso
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-drizzle.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Singapur" height="150px" width="150px">
+                        <div class="card-header">
+                            Singapore
+                        </div>
+                        <div class="card-body">
+                            20°C <br>
+                            <hr class="my-2">
+                            Lluvia leve
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/extreme.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Hong Kong" height="150px" width="150px">
+                        <div class="card-header">
+                            Hong Kong
+                        </div>
+                        <div class="card-body">
+                            12°C <br>
+                            <hr class="my-2">
+                            Nublado
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Shanghai" height="150px" width="150px">
+                        <div class="card-header">
+                            Shanghai
+                        </div>
+                        <div class="card-body">
+                            12°C <br>
+                            <hr class="my-2">
+                            Soleado
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card text-center mx-auto w-75 h-100">
+                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-snow.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Seul" height="150px" width="150px">
+                        <div class="card-header">
+                            Seoul
+                        </div>
+                        <div class="card-body">
+                            12°C <br>
+                            <hr class="my-2">
+                            Nublado con posibilidad de nieve
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+            <footer class="py-3 my-4">
+                <ul class="navbar justify-content-center border-bottom border-top pb-3 mb-3" style="list-style-type: none;">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Inicio</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link disabled px-2 text-body-secondary">Busca tu ciudad</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Acerca de</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contacto</a></li>
+                </ul>
+                <p class="text-center text-body-secondary">&copy; 2025 Bootcamp Sustantiva </p>
+            </footer>
+        </main>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </body>
