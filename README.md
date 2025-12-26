@@ -11,4 +11,4 @@ The Lean Product Playbook, Dan Olsen
 
 "For your MVP, you want to identify the minimum funcionality required to validate that you are heading the right direction
 
-"Para tu MVP, quieres identificar la funcionabilidad minima para validad que te diriges en la direccion correcta"
+"Para tu MVP, quieres identificar la funcionalidad minima para validad que te diriges en la direccion correcta"
