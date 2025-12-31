@@ -12,3 +12,11 @@ The Lean Product Playbook, Dan Olsen
 "For your MVP, you want to identify the minimum funcionality required to validate that you are heading the right direction
 
 "Para tu MVP, quieres identificar la funcionalidad minima para validad que te diriges en la direccion correcta"
+
+## Como Ingresar?
+
+Para una demostracion funcional, visitar la pagina:
+https://luis-barahona23.github.io/proyecto-portafolio-bootcamp/
+
+Para ver el codigo fuente, visitar la pagina:
+https://github.com/luis-barahona23/proyecto-portafolio-bootcamp
