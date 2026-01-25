@@ -20,3 +20,14 @@ https://luis-barahona23.github.io/proyecto-portafolio-bootcamp/
 
 Para ver el codigo fuente, visitar la pagina:
 https://github.com/luis-barahona23/proyecto-portafolio-bootcamp
+
+
+## Parte 2 de proyecto Front-end
+
+### Metodologia escogida
+
+Se mantiene la funcionalidad ya estableida en la parte 1 del trabajo, es necesario cambiar la metodologia de estilo (BEM, OCSS, SACSS)
+En este proyecto, o por lo menos al inicio de este, se utilizara la metodologia BEM, debido a que el codigo ya cuenta con un framework (Bootstrap) por lo que el estilo de este ya se encuentra realizado a nivel MVP, y BEM es el mas facil/recomendable cuando el codigo no es de gran tamaño.
+
+### Estructura SASS
+
