@@ -1,0 +1,5 @@
+@use "../base/_mixins" as *;
+
+.main {
+    @include mainStyle;
+}

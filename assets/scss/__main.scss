@@ -1,6 +1,8 @@
 @use "../scss/base/_mixins" as *;
 @use "../scss/base/_variables" as *;
 
+@use "../scss/layout/_main" as *;
+
 @use "../scss/components/_button" as *;
 @use "../scss/components/_header" as *;
 @use "../scss/components/_paragraph" as *;
