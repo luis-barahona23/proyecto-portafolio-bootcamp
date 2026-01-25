@@ -31,3 +31,4 @@ En este proyecto, o por lo menos al inicio de este, se utilizara la metodologia 
 
 ### Estructura SASS
 
+El proyecto no cuenta con las suficientes partes para meritar una implementacion SASS robusta, sobre todo por el hecho de contar con un framework, este trunca toda capacidad extra que el preprocesador pueda dar, con eso en cuenta, agregamos una variable para el color de fondo de la pagina web, tambien contamos con un mixin que se encarga de agregar este a la pagina, mas alla de la base, el preprocesador cuenta con los compenentes utilizados para los componentes que pueden ser añadidos.
