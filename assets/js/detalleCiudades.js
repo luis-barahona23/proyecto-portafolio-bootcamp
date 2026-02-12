@@ -1,4 +1,4 @@
-const ciudades = [
+export const ciudades = [
     {
         "nombreCiudad": "Santiago",
         "tempActual": "27°C",
