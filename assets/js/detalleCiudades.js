@@ -1,6 +1,8 @@
-export const ciudades = [
+export const ciudades = {
+    "nombreCiudad": "Santiago",
+    "informacion":
     {
-        "nombreCiudad": "Santiago",
+        
         "tempActual": "27°C",
         "estadoCiudad": "Soleado",
         "lluviaPorcentaje": "0%",
@@ -73,8 +75,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "New York",
+    "informacion":
     {
-        "nombreCiudad": "New York",
+        
         "tempActual": "27°C",
         "estadoCiudad": "Soleado",
         
@@ -145,8 +149,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Los Angeles",
+    "informacion":
     {
-        "nombreCiudad": "Los Angeles",
+        
         "tempActual": 21,
         "estadoCiudad": "Soleado",
         "pronosticoSemanal": [
@@ -216,8 +222,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "London",
+    "informacion":
     {
-        "nombreCiudad": "London",
+        
         "tempActual": "6°C",
         "estadoCiudad": "Soleado",
         "pronosticoSemanal": [
@@ -287,8 +295,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Tokyo",
+    "informacion":
     {
-        "nombreCiudad": "Tokyo",
+        
         "tempActual": "10°C",
         "estadoCiudad": "Soleado",
         "pronosticoSemanal": [
@@ -358,8 +368,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Paris",
+    "informacion":
     {
-        "nombreCiudad": "Paris",
+        
         "tempActual": "2°C",
         "estadoCiudad": "Nublado",
         "pronosticoSemanal": [
@@ -429,8 +441,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Singapore",
+    "informacion":
     {
-        "nombreCiudad": "Singapore",
+        
         "tempActual": "26°C",
         "estadoCiudad": "Tormenta Electrica",
         "pronosticoSemanal": [
@@ -500,8 +514,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Hong Kong",
+    "informacion":
     {
-        "nombreCiudad": "Hong Kong",
+        
         "tempActual": "17°C",
         "estadoCiudad": "Soleado",
         "pronosticoSemanal": [
@@ -571,8 +587,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Shanghai",
+    "informacion":
     {
-        "nombreCiudad": "Shanghai",
+        
         "tempActual": "10°C",
         "estadoCiudad": "Nublado",
         "pronosticoSemanal": [
@@ -642,8 +660,10 @@ export const ciudades = [
             }
         ]
     },
+    "nombreCiudad": "Seoul",
+    "informacion":
     {
-        "nombreCiudad": "Seoul",
+        
         "tempActual": "-1°C",
         "estadoCiudad": "Soleado",
         "pronosticoSemanal": [
@@ -713,4 +733,4 @@ export const ciudades = [
             }
         ]
     }
-]
+}
