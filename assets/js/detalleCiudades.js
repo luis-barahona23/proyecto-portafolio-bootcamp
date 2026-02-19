@@ -1,6 +1,7 @@
-export const ciudades = {
-    "nombreCiudad": "Santiago",
-    "informacion":
+export const ciudades = [
+    { 
+        nombreCiudad: "Santiago",
+        "informacion":
     {
         
         "tempActual": "27°C",
@@ -74,7 +75,8 @@ export const ciudades = {
                 "velocidadViento": "11 Km/h",
             }
         ]
-    },
+    }
+},{
     "nombreCiudad": "New York",
     "informacion":
     {
@@ -148,7 +150,7 @@ export const ciudades = {
                 "velocidadViento": "10 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Los Angeles",
     "informacion":
     {
@@ -170,7 +172,7 @@ export const ciudades = {
                 "dia": "Martes",
                 "tempMinima": 15,
                 "tempMaxima": 20,
-                "Pronostico": "Soleado",
+                "Pronostico": "Nublado",
                 "lluviaPorcentaje": "10%",
                 "humedad": "48%",
                 "velocidadViento": "10 Km/h",
@@ -221,7 +223,7 @@ export const ciudades = {
                 "velocidadViento": "6 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "London",
     "informacion":
     {
@@ -294,7 +296,7 @@ export const ciudades = {
                 "velocidadViento": "14 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Tokyo",
     "informacion":
     {
@@ -367,7 +369,7 @@ export const ciudades = {
                 "velocidadViento": "N/A Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Paris",
     "informacion":
     {
@@ -407,7 +409,7 @@ export const ciudades = {
                 "dia": "Jueves",
                 "tempMinima": 18,
                 "tempMaxima": 30,
-                "Pronostico": "Soleado",
+                "Pronostico": "Nublado",
                 "lluviaPorcentaje": "0%",
                 "humedad": "22%",
                 "velocidadViento": "14 Km/h",
@@ -416,7 +418,7 @@ export const ciudades = {
                 "dia": "Viernes",
                 "tempMinima": -3,
                 "tempMaxima": 5,
-                "Pronostico": "Nublado con Posiblidad de Nieve",
+                "Pronostico": "con Posiblidad de Nieve",
                 "lluviaPorcentaje": "25%",
                 "humedad": "82%",
                 "velocidadViento": "13 Km/h",
@@ -440,7 +442,7 @@ export const ciudades = {
                 "velocidadViento": "6 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Singapore",
     "informacion":
     {
@@ -513,7 +515,7 @@ export const ciudades = {
                 "velocidadViento": "18 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Hong Kong",
     "informacion":
     {
@@ -586,7 +588,7 @@ export const ciudades = {
                 "velocidadViento": "16 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Shanghai",
     "informacion":
     {
@@ -659,7 +661,7 @@ export const ciudades = {
                 "velocidadViento": "10 Km/h",
             }
         ]
-    },
+    }},{
     "nombreCiudad": "Seoul",
     "informacion":
     {
@@ -732,5 +734,5 @@ export const ciudades = {
                 "velocidadViento": "N/A Km/h",
             }
         ]
-    }
-}
+    }}
+]
