@@ -1,38 +1,42 @@
 import {ciudades} from "./detalleCiudades.js"
 console.log(ciudades.length)
 let arregloFinal = [];
-function totalTemp(listaDias, nombreKey) {
+function totalTemp(listaDias, nombreKey) //Funcion recibe el arreglo del pronostico semanal y la llave a reducir
+{
     let valorTotal = listaDias.reduce((total, dia)=> {
-        return total + dia[nombreKey];
+        return total + dia[nombreKey]; //se llama el metodo reducir al arreglo donde se suman los valores de cada dia segun la llave pasada al segundo parametro
     }, 0);
     return valorTotal;
 }
-function totalDia(clima, climaSolicitado) {
-    let total = 0;
-    clima.forEach((elemento) => {
-        if (elemento["Pronostico"].includes(climaSolicitado)) {
-            total +=1;
+function totalDia(clima, climaSolicitado) //Funcion recibe el arreglo del pronostico semanal y la llave a contar el valor
+{
+    let total = 0; //variable inicializada en 0 que sera retornada con el valor total
+    clima.forEach((elemento) => { //Se recorre el arreglo de pronostico semana
+        if (elemento["Pronostico"].includes(climaSolicitado)) { //si el elemento (objeto) del arreglo cuenta con una llave que contiene la string pasada en el segundo parametro
+            total +=1; // se agrega 1 al valor total
     }
     })
-    return total;
+    return total; //retorna el valor de la variable total
 }
-function maxValor(listaDias, nombreKey) {
-    let max = 0 
-    listaDias.forEach((elemento) => {
-        if (elemento[nombreKey] >= max){
-            max = elemento[nombreKey];
+function maxValor(listaDias, nombreKey)//Funcion recibe el arreglo del pronostico semanal y la llave a buscar
+ {
+    let max = 0 //inicializar variable que tendra el valor maximo pasado
+    listaDias.forEach((elemento) => { //recorrer el arreglo del pronostico semanal
+        if (elemento[nombreKey] >= max){ //en cada elemento del arreglo (objeto), se compara el valor de la propiedad solicitada con el segundo parametro de la funcion, si el valor es mayor a la variable "max"
+            max = elemento[nombreKey]; //la variable "max" pasa a ser ese valor
         }
     })
-    return max;
+    return max; //retorna el valor de "max"
 }
-function minValor(listaDias, nombreKey) {
-    let min = 0 
-    listaDias.forEach((elemento) => {
-        if (elemento[nombreKey] <= min){
-            min = elemento[nombreKey];
+function minValor(listaDias, nombreKey) //Funcion recibe el arreglo del pronostico semanal y la llave a buscar
+{
+    let min = Infinity //inicializar variable que tendra el valor minimo pasado, se inicializa en "Infinity" y no 0, debido a la posibilidad de que los valores pasados no sean menores a 0
+    listaDias.forEach((elemento) => { //recorrer el arreglo del pronostico semanal
+        if (elemento[nombreKey] <= min){ //condicional que verifica que el valor de cada propiedad con la llave pasada como segundo argumento de la funcion
+            min = elemento[nombreKey]; //si la condicion se cumple, modificar la variable "min"
         }
     })
-    return min;
+    return min; //retornar la variable "min"
 }
 
 for (let i = 0; i < ciudades.length; i++) {
