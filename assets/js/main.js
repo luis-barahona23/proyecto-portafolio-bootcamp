@@ -50,4 +50,28 @@ for (let i = 0; i < ciudades.length; i++) {
         minTemp: minValor(ciudades[i].informacion.pronosticoSemanal, "tempMinima")
     })
 }
-console.log(arregloFinal);
+
+const displays = document.querySelectorAll(".displayResumen");
+
+displays.forEach((elemento, index) => {
+    const resumen = document.createElement("div");
+    resumen.textContent = `Resumen meteorologico de ${arregloFinal[index].ciudad}`;
+    elemento.appendChild(resumen);
+    const temperaturaMax = document.createElement("div");
+    temperaturaMax.textContent += ` Temperatura maxima: ${arregloFinal[index].maxTemp}°C`;
+    elemento.appendChild(temperaturaMax);
+    const temperaturaMin = document.createElement("div");
+    temperaturaMin.textContent += ` Temperatura minima: ${arregloFinal[index].minTemp}°C`;
+    elemento.appendChild(temperaturaMin);
+    const descripcion = document.createElement("div");
+    if ((arregloFinal[index].diasSoleados > arregloFinal[index].diasNublado && arregloFinal[index].diasSoleados > arregloFinal[index].diasLluviosos)){
+        descripcion.textContent = "La semana es mayormente soleada";
+    }
+    else if ((arregloFinal[index].diasLluviosos > arregloFinal[index].diasSoleados || arregloFinal[index].diasChubascos > arregloFinal[index].diasSoleados)){
+        descripcion.textContent = "La semana es mayormente lluviosa";
+    }
+    else if ((arregloFinal[index].diasNublado > arregloFinal[index].diasSoleados || arregloFinal[index].diasNublado > arregloFinal[index].diasLluviosos && arregloFinal[index].diasNublado > arregloFinal[index].diasChubascos)){
+        descripcion.textContent = "La semana es mayormente nublada";
+    }
+    elemento.appendChild(descripcion);
+})
