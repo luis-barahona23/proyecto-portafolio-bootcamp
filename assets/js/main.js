@@ -54,6 +54,7 @@ for (let i = 0; i < ciudades.length; i++) {
 const displays = document.querySelectorAll(".displayResumen");
 
 displays.forEach((elemento, index) => {
+    elemento.classList.add("d-flex", "gap-3", "flex-column", "border", "text-center", "bg-light");
     const resumen = document.createElement("div");
     resumen.textContent = `Resumen meteorologico de ${arregloFinal[index].ciudad}`;
     elemento.appendChild(resumen);
