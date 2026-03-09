@@ -26,13 +26,18 @@ const singapur = new ApiCall("https://api.open-meteo.com/v1/forecast?latitude=1.
 const hk = new ApiCall("https://api.open-meteo.com/v1/forecast?latitude=22.2783&longitude=114.1747&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,wind_speed_10m&timezone=auto");
 const shangai = new ApiCall("https://api.open-meteo.com/v1/forecast?latitude=31.2222&longitude=121.4581&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,wind_speed_10m&timezone=auto");
 const seul = new ApiCall("https://api.open-meteo.com/v1/forecast?latitude=37.566&longitude=126.9784&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=temperature_2m,relative_humidity_2m,precipitation_probability,wind_speed_10m&timezone=auto");
-santiago.fetchCall();
-nyc.fetchCall();
-losAngeles.fetchCall();
-londres.fetchCall();
-tokio.fetchCall();
-paris.fetchCall();
-singapur.fetchCall();
-hk.fetchCall();
-shangai.fetchCall();
-seul.fetchCall();
+setTimeout(()=>{ //hacer el llamado fetch individualmente generaba el error 429 (demasiadas conexiones concurrentes), asi que fue necesario separar las fetch en lotes para evitarlo
+    santiago.fetchCall();
+    nyc.fetchCall();
+    losAngeles.fetchCall();
+    londres.fetchCall();
+    tokio.fetchCall();
+},1000)
+setTimeout(()=> {
+    paris.fetchCall();
+    singapur.fetchCall();
+    hk.fetchCall();
+    shangai.fetchCall();
+    seul.fetchCall();
+}, 1500);
+
