@@ -1,5 +1,4 @@
-import {ciudades} from "./detalleCiudades.js"
-console.log(ciudades.length)
+import {ciudades} from "./detalleCiudades.js";
 let arregloFinal = [];
 function totalTemp(listaDias, nombreKey) //Funcion recibe el arreglo del pronostico semanal y la llave a reducir
 {
