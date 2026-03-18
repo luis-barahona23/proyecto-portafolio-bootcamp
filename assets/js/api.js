@@ -6,7 +6,7 @@ export class ApiCall {
 
     async fetchCall() {
         const url = this.fetchUrl;
-        if (this.resultado !== null) {
+        if (this.resultado != null) {
             return this.resultado
         }
         try {
