@@ -11,7 +11,7 @@
         <!-- https://www.flaticon.com/free-icons/weather" Weather icons created by iconixar - Flaticon - Licencia necesaria para utilizar imagen-->
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg bg-light sticky-top pt-0">
+        <nav class="navbar navbar-expand-lg bg-light pt-0">
             <div class="container-fluid shadow">
                     <a class="navbar-brand" href="#"><img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/rainy-1-day.svg" alt="logo temporaneo de pagina web, un sol tapado por una nube con leves gotas cayendo"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,163 +39,31 @@
                 </div>
             </nav>
             <main class="main__container">
-            <div class="container-fluid">
-                <h1 class="header">Clima del mundo</h1>
-                <p class="paragraph">
-                    Los climas seran valores predeterminados en forma de ejemplo, la pagina contara con otra manera de visualizar los valores verdaderos del clima en tiempo real mas adelante.
-                </p>
-            </div>
-            <div class="container-card row row-cols-1 row-cols-md-2 row-cols-lg-5 g-3" id="inicio">
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Santiago" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Santiago
-                        </div>
-                        <div class="card-body card__paragraph">
-                            27°C <br>
-                            <hr class="my-2">
-                            Soleado
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#santiago'">Ver detalle</button>
-                        </div>
+                <h1 class="text-center">Clima del Mundo</h1>
+            <div class="container row row-cols-1 row-cols-md-1 row-cols-lg-1 g-3 d-flex flex-column mx-auto p-0" id="inicio">
+                <div id="first-card" class="container-fluid d-flex border shadow mt-5 ">
+                    <div class="card text-center col tarjeta-1">
+                    </div>
+                    <div class="card text-center col tarjeta-1">
+                    </div>
+                    <div class="card text-center col tarjeta-1">
+                    </div>
+                    <div class="card text-center col tarjeta-1">
+                    </div>
+                    <div class="card text-center col tarjeta-1">
+                    </div>
+                </div>
+                <div id="second-card" class="container-fluid d-flex border shadow mt-5">
+                    <div class="card text-center tarjeta-2 col">
                         
                     </div>
-                </div>
-                 <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Nueva York" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            New York
-                        </div>
-                        <div class="card-body card__paragraph">
-                            14°C <br>
-                            <hr class="my-2">
-                            Nuboso
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#new-york'">Ver detalle</button>
-                        </div>
+                    <div class="card text-center col tarjeta-2">
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/drizzle.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Los Angeles" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Los Angeles
-                        </div>
-                        <div class="card-body card__paragraph">
-                            17°C <br>
-                            <hr class="my-2">
-                            Lluvia leve
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__nav" onclick="window.location.href='pagina-detalle.html#los-angeles'">Ver detalle</button>
-                        </div>
+                    <div class="card text-center col tarjeta-2">
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/extreme-rain.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Londres" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            London
-                        </div>
-                        <div class="card-body card__paragraph">
-                            15°C <br>
-                            <hr class="my-2">
-                            Lluvia
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__nav" onclick="window.location.href='pagina-detalle.html#london'">Ver detalle</button>
-                        </div>
+                    <div class="card text-center col tarjeta-2">
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/snow.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Tokyo" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Tokyo
-                        </div>
-                        <div class="card-body card__paragraph">
-                            12°C <br>
-                            <hr class="my-2">
-                            Nieve
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#tokio'">Ver detalle</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Los Angeles" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Paris
-                        </div>
-                        <div class="card-body card__paragraph">
-                            15°C <br>
-                            <hr class="my-2">
-                            Nuboso
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#paris'">Ver detalle</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-drizzle.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Singapur" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Singapore
-                        </div>
-                        <div class="card-body card__paragraph">
-                            20°C <br>
-                            <hr class="my-2">
-                            Lluvia leve
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#singapur'">Ver detalle</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/extreme.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Hong Kong" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Hong Kong
-                        </div>
-                        <div class="card-body card__paragraph">
-                            12°C <br>
-                            <hr class="my-2">
-                            Nublado
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#hk'">Ver detalle</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Shanghai" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Shanghai
-                        </div>
-                        <div class="card-body card__paragraph">
-                            12°C 
-                            <br>
-                            <hr class="my-2">
-                            Soleado
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#shanghai'">Ver detalle</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card text-center mx-auto w-75 h-100">
-                        <img src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/partly-cloudy-day-snow.svg" class="mx-auto" alt="Imagen representando el clima actual de la ciudad Seul" height="150px" width="150px">
-                        <div class="card-header card__title">
-                            Seoul
-                        </div>
-                        <div class="card-body card__paragraph">
-                            12°C <br>
-                            <hr class="my-2">
-                            Nublado con posibilidad de nieve
-                            <hr class="my-2">
-                            <button class="btn btn-primary align-self-center button__card" onclick="window.location.href='pagina-detalle.html#seul'">Ver detalle</button>
-                        </div>
+                    <div class="card text-center col tarjeta-2">
                     </div>
                 </div>
             </div>
