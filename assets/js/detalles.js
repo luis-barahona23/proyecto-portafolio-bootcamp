@@ -28,9 +28,9 @@ function crearContenedor(ciudad) {
     contenedor.appendChild(conjuntoCartas);
     mainDisplay.appendChild(contenedor);
 }
-function crearCarta(ciudad) {
+function crearCarta(ciudad, indice) {
     var nombreCiudad = separarNombre(ciudad)
-    var contenedorGrupo = document.querySelector(`#${nombreCiudad}`)
+    //var contenedorGrupo = document.querySelector(`#${nombreCiudad}`)
     var carta = document.createElement("div");
     var icono = document.createElement("img");
     var tituloDia = document.createElement("h5"); //titulo de cada tarjeta con la fecha
@@ -49,7 +49,7 @@ function crearCarta(ciudad) {
     var viento = document.createElement("td");
     var humedadValor = document.createElement("td");
     var vientoValor = document.createElement("td");
-    tituloDia.textContent = `${conseguirDia(ciudad['dia'])}`; //fecha a mostrar en la tarjeta
+    tituloDia.textContent = `${conseguirDia(ciudad[`${dia}`])}`; //fecha a mostrar en la tarjeta
     icono.setAttribute('src', dia.weather_code=null); //establecer que va a mostrar la imagen
     icono.setAttribute('width', '100px'); //estandarizar el tamaño del icono
     icono.setAttribute('height', '100px'); //estandarizar el tamaño del icono
@@ -75,7 +75,7 @@ function crearCarta(ciudad) {
     tablaCarta.append(filaTabla1, filaTabla2, filaTabla3, filaTabla4);
     cuerpoCarta.appendChild(tablaCarta);
     carta.append(tituloDia, icono, cuerpoCarta);
-    contenedorGrupo.appendChild(carta);
+    //contenedorGrupo.appendChild(carta);
 }
 
 function separarNombre(ciudad) {
