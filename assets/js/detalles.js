@@ -3,6 +3,7 @@ function retrasar(ms){
     return new Promise(resolver => setTimeout(resolver, ms));       
 }
 
+//Creacion de las variables a utilizar en esta pagina web
 const [stgo, newYorkcity, lA, london, tokyo] = await Promise.all(
     arregloCiudades1.map(ciudad => ciudad.fetchCall())
 );
@@ -12,25 +13,30 @@ await retrasar(1000);
 const [par, sngpr, hk, shanghai, seoul] = await Promise.all(
     arregloCiudades2.map(ciudad => ciudad.fetchCall())
 );
-
+//variable con el elemento que recibira todos los contenedores hijos para cada ciudad
 const mainDisplay = document.querySelector("#contenedor-principal");
-
+//creacion de contenedor cada uno con el nombre de la ciudad (en ingles) y su id correspondiente
 function crearContenedor(ciudad) {
-    var ciudadActual = separarNombre(ciudad);
+    var ciudadActual = ciudad['nombreCiudad'];
     var nombreCiudad = document.createElement("h4");
     nombreCiudad.textContent = `${ciudadActual}`;
     var contenedor = document.createElement("div");
     var conjuntoCartas = document.createElement("div");
     conjuntoCartas.classList.add("card-group", "px-0", "mx-auto");
-    contenedor.id = `${ciudadActual}`;
+    conjuntoCartas.id = `grupo${ciudadActual.replace(/\s/g, '')}`;
+    contenedor.id = `${ciudadActual.replace(/\s/g, '')}`;
     contenedor.classList.add("gap-3", "d-flex", "flex-column");
     contenedor.appendChild(nombreCiudad);
     contenedor.appendChild(conjuntoCartas);
     mainDisplay.appendChild(contenedor);
 }
+//funcion que recibe el codigo que la API asigna a cada clima para utilizar el icono correcto
+function conseguirIcono(codigo) {
+    return iconos[codigo]['dia'];
+}
+//funcion a cargo de crear la carta para cada dia mostrado en la pagina de detalles
 function crearCarta(ciudad, indice) {
-    var nombreCiudad = separarNombre(ciudad)
-    //var contenedorGrupo = document.querySelector(`#${nombreCiudad}`)
+    var grupoCartas = document.querySelector(`#grupo${ciudad['nombreCiudad'].replace(/\s/g, '')}`)
     var carta = document.createElement("div");
     var icono = document.createElement("img");
     var tituloDia = document.createElement("h5"); //titulo de cada tarjeta con la fecha
@@ -49,25 +55,26 @@ function crearCarta(ciudad, indice) {
     var viento = document.createElement("td");
     var humedadValor = document.createElement("td");
     var vientoValor = document.createElement("td");
-    tituloDia.textContent = `${conseguirDia(ciudad[`${dia}`])}`; //fecha a mostrar en la tarjeta
-    icono.setAttribute('src', dia.weather_code=null); //establecer que va a mostrar la imagen
+    tituloDia.textContent = `${conseguirDia(ciudad[`dia${indice+1}`]['dia'])}`; //fecha a mostrar en la tarjeta
+    tituloDia.classList.add('text-center')
+    icono.setAttribute('src', conseguirIcono(ciudad[`dia${indice+1}`]['codigoIcono'])); //establecer que va a mostrar la imagen
     icono.setAttribute('width', '100px'); //estandarizar el tamaño del icono
     icono.setAttribute('height', '100px'); //estandarizar el tamaño del icono
     icono.classList.add("mx-auto"); //centrar la imagen
     cuerpoCarta.classList.add('card-body', 'px-0');
     tablaCarta.classList.add('table', 'table-bordered', 'table-sm', 'table-striped');
-    filaTabla1.classList.add("text-center");
+    filaTabla1.classList.add("text-center", 'border');
     filaTabla2.classList.add("text-center");
     filaTabla3.classList.add("text-center");
     filaTabla4.classList.add("text-center");
     temp.textContent = 'Temperatura';
     lluvia.textContent= 'Lluvia (%)';
-    tempValor.textContent = `${ciudad.daily.temperature_2m_mean[actual]}`
-    lluviaValor.textContent = `${ciudad.daily.precepitation_probability_mean[actual]}`
+    tempValor.textContent = `${ciudad[`dia${indice+1}`]['temperaturaPromedio']}°C`;
+    lluviaValor.textContent = `${ciudad[`dia${indice+1}`]['precipitacion']}%`;
     humedad.textContent = 'Humedad';
     viento.textContent = 'Viento';
-    humedadValor.textContent = `${ciudad.daily.relative_humidity_2m_mean[actual]}`;
-    vientoValor.textContent = `${ciudad.daily.wind_speed_10m_mean[actual]}`;
+    humedadValor.textContent = `${ciudad[`dia${indice+1}`]['humedadPromedio']}%`;
+    vientoValor.textContent = `${ciudad[`dia${indice+1}`]['vientoPromedio']}Km/H`;
     filaTabla1.append(temp, lluvia);
     filaTabla2.append(tempValor, lluviaValor);
     filaTabla3.append(humedad, viento);
@@ -75,15 +82,15 @@ function crearCarta(ciudad, indice) {
     tablaCarta.append(filaTabla1, filaTabla2, filaTabla3, filaTabla4);
     cuerpoCarta.appendChild(tablaCarta);
     carta.append(tituloDia, icono, cuerpoCarta);
-    //contenedorGrupo.appendChild(carta);
+    grupoCartas.appendChild(carta);
 }
-
+//funcion que se utilza para formatear el nombre de manera correcta
 function separarNombre(ciudad) {
     let nombreASeparar = ciudad.timezone.split('/');
     nombreASeparar = nombreASeparar[1].split('_');
     return nombreASeparar.join(' ')
 }
-
+//funcion que manipula la API para transformarla a un formato utilizable en el codigo
 function conseguirSemana(ciudad) {
     const objetoSemana = {
         dia1 : {},
@@ -102,15 +109,18 @@ function conseguirSemana(ciudad) {
         objetoSemana[`dia${i+1}`]['temperaturaPromedio'] = ciudad.temperature_2m_mean[i];
         objetoSemana[`dia${i+1}`]['humedadPromedio'] = ciudad.relative_humidity_2m_mean[i];
         objetoSemana[`dia${i+1}`]['precipitacion'] = ciudad.precipitation_probability_mean[i];
+        objetoSemana[`dia${i+1}`]['vientoPromedio'] = ciudad.wind_speed_10m_mean[i];
     }
     return objetoSemana;
     
 }
+//funcion encargada de establecer el dia a mostrar segun la fecha (ejemplo: 14-02-2026 = Sabado)
 function conseguirDia(fecha) {
-    var date = new Date(fecha);
+    var date = new Date(fecha + 'T00:00:00');
     return date.toLocaleDateString('es-ES', {weekday: 'short'}).charAt(0).toUpperCase() + date.toLocaleDateString('es-ES', {weekday: 'short'}).slice(1);
 }
-console.log(stgo);
+
+//creacion de cada semana para utilizar la funcion de crear tarjetas
 const stgoSemana = conseguirSemana(stgo.daily);
 const nycSemana = conseguirSemana(newYorkcity.daily);
 const losAngelesSemana = conseguirSemana(lA.daily);
@@ -122,4 +132,43 @@ const hongKongSemana = conseguirSemana(hk.daily);
 const shangaiSemana = conseguirSemana(shanghai.daily);
 const seulSemana = conseguirSemana(seoul.daily);
 
-const contenedor1 = crearContenedor(stgo);
+//agregar nombre de la ciudad para cada objeto de la semana, mejora la utilizacion de objetos, concentrandolos en uno solo
+stgoSemana['nombreCiudad'] = separarNombre(stgo);
+nycSemana['nombreCiudad'] = separarNombre(newYorkcity);
+losAngelesSemana['nombreCiudad'] = separarNombre(lA);
+londresSemana['nombreCiudad'] = separarNombre(london);
+tokioSemana['nombreCiudad'] = separarNombre(tokyo);
+parisSemana['nombreCiudad'] = separarNombre(par);
+singapurSemana['nombreCiudad'] = separarNombre(sngpr);
+hongKongSemana['nombreCiudad'] = separarNombre(hk);
+shangaiSemana['nombreCiudad'] = separarNombre(shanghai);
+seulSemana['nombreCiudad'] = separarNombre(seoul);
+
+//creacion de los contenedores para cada ciudad
+crearContenedor(stgoSemana);
+crearContenedor(nycSemana);
+crearContenedor(losAngelesSemana);
+crearContenedor(londresSemana);
+crearContenedor(tokioSemana);
+crearContenedor(parisSemana);
+crearContenedor(singapurSemana);
+crearContenedor(hongKongSemana);
+crearContenedor(shangaiSemana);
+crearContenedor(seulSemana);
+
+
+//creacion de las tarjetas para cada dia segun el contenedor al que llama
+for (let i = 0; i < 7; i++){
+    crearCarta(stgoSemana, i);
+    crearCarta(nycSemana, i);
+    crearCarta(losAngelesSemana, i);
+    crearCarta(londresSemana, i);
+    crearCarta(tokioSemana, i);
+    crearCarta(parisSemana, i);
+    crearCarta(singapurSemana, i);
+    crearCarta(hongKongSemana, i);
+    crearCarta(shangaiSemana, i);
+    crearCarta(seulSemana, i);
+}
+
+//Tenia problemas con la asignacion de ID a cada elemento contenedor, al parecer el hecho de que contenga espacios genera conflicto con el codigo, pero no por parte de JavaScript, si no mas bien por parte de CSS, fue necesario agregar una expresion regular (regex) que encuentre cada espacio y lo reemplaze con nada (replace(/\s/g, ''))
