@@ -45,3 +45,33 @@ La estructura de datos es un arreglo de objetos, en el que cada objeto cuenta co
 Dentro del siguiente archivo JavaScript, se encuentra la logica utilizada, donde se crea un arreglo secundario por cada elemento dentro del arreglo principal, que contiene el nombre de la ciudad, la temperatura promedio semanal estimada, la cantidad de dias segun el clima (Soleado, nublado, lluvioso, tormenta, nevado, etc.), la temperatura maxima estimada en la semana, y la temperatura minima estimada de la semana. A traves de diferentes funciones* se logra acumular los valores necesitados para este arreglo y poder manipular el DOM a traves de un bucle .forEach().
 
 ** Ver funciones: totalTemp(), totalDia(), maxValor(), minValor() para entender su utilizacion.
+
+## Parte 4 de Proyecto Front-End
+
+### Utilizacion de APIs
+
+El proyecto cuenta con la utilizacion de una [API Open-Source](https://open-meteo.com/en/docs) llamada Open-Meteo la cual se encargara de generar la informacion necesaria para el proyecto, la informacion en formato JSON pasa a ser estandarizada segun la ciudad para la cual se solicita.
+
+### Estructura de clases
+
+La clase que es utilizada contiene una estructura simple, el constructor de esta recibe un solo argumento, la URL establecida segun la ciudad (en el caso de nuestra pagina web, las 9 ciudades mas populares + santiago de Chile), y tambien cuenta con una variable "resultado" que inicializa en "null" (mas adelante se explica el motivo). 
+La clase cuenta con un solo metodo en formato async, esto es para manejar de manera correcta el consumo de APIs, en donde el objeto guardara la informacion recibida en formato JSON en la variable 'resultado' de cada objeto, de manera que permita la manipulacion de esta informacion sin la necesidad de llamar a la funcion fetch(), si la variable "resultado" no se encuentra en 'null', esto quiere decir que recibio informacion, para asi utilizar esta, de no ser asi, el metodos esta estructurado para utilizar la funcion fetch() en la URL.
+La clase es utilizada un total de 10 veces en este proyecto, una vez por ciudad.
+
+### Calculo de estadisticas 
+
+Afortunadamente la API cuenta con una personalizacion bastante grande en respecto a la informacio que puedo solicitar, asi que cree un perfil que recibe la informacion superficial del dia 0 (dia que se llama fetch() a la API) e informacion detallada de los siguientes 7 dias (empezando del dia que se llama fetch() a la API), dentro del archivo JS que se encarga de la pagina de informacion detallada se encuentra la logica utilizada, una combinacion de creacion de objetos menores, para un mejor acceso a la informacion semanal, junto con una pequeña reduccion de las llaves creadas segun el clima, de esa manera se recibe el clima que mas se repite y se puede presentar en la pagina.
+
+# Arreglos Y Tweaks a mejorar
+
+## Arreglos
+- Ajustar iconografia en pantalla principal (El ciclo dia/noche solo funciona con el horario local del usuario)
+- Ajustar iconografia en pantalla de detalle (El ciclo dia/noche fue degradado a solo dia por falta de conocimientos).
+- Integrar de manera correcta la mejora que permite al usuario buscar cualquier ciudad y recibir la informacion
+- Agregar modo oscuro
+- NO DECIDIDO AUN: agregar i18n/l10n
+
+## Tweaks
+- Agregar mas iconografia que represente correctamente la meteorologia
+- Mejorar Rendimiento de paginas web
+- Mejorar en lo posible el diseño del sitio web
