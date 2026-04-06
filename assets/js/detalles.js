@@ -22,6 +22,7 @@ function crearContenedor(ciudad) {
     nombreCiudad.textContent = `${ciudadActual}`;
     var contenedor = document.createElement("div");
     var conjuntoCartas = document.createElement("div");
+    nombreCiudad.classList.add('text-center')
     conjuntoCartas.classList.add("card-group", "px-0", "mx-auto");
     conjuntoCartas.id = `grupo${ciudadActual.replace(/\s/g, '')}`;
     contenedor.id = `${ciudadActual.replace(/\s/g, '')}`;
@@ -43,6 +44,7 @@ function crearCarta(ciudad, indice) {
     var cuerpoCarta = document.createElement("div"); //div que se encarga del cuerpo de la tarjeta
     var tablaCarta = document.createElement("table"); //crear tabla que contiene los datos
     carta.classList.add("card", "overflow-scroll"); //asegurar que la tarjeta permita hacer scroll
+    var tablaCuerpo = document.createElement("tbody");
     var filaTabla1 = document.createElement("tr");
     var filaTabla2 = document.createElement("tr");
     var filaTabla3 = document.createElement("tr");
@@ -79,7 +81,8 @@ function crearCarta(ciudad, indice) {
     filaTabla2.append(tempValor, lluviaValor);
     filaTabla3.append(humedad, viento);
     filaTabla4.append(humedadValor, vientoValor);
-    tablaCarta.append(filaTabla1, filaTabla2, filaTabla3, filaTabla4);
+    tablaCuerpo.append(filaTabla1, filaTabla2, filaTabla3, filaTabla4);
+    tablaCarta.append(tablaCuerpo);
     cuerpoCarta.appendChild(tablaCarta);
     carta.append(tituloDia, icono, cuerpoCarta);
     grupoCartas.appendChild(carta);
@@ -172,3 +175,82 @@ for (let i = 0; i < 7; i++){
 }
 
 //Tenia problemas con la asignacion de ID a cada elemento contenedor, al parecer el hecho de que contenga espacios genera conflicto con el codigo, pero no por parte de JavaScript, si no mas bien por parte de CSS, fue necesario agregar una expresion regular (regex) que encuentre cada espacio y lo reemplaze con nada (replace(/\s/g, ''))
+
+const tipoDias = {
+    soleado: [0, 1], //Solo 2 codigos se pueden considerar soleado: totalmente soleado o mayoritariamente soleado
+    nublado: [2, 3, 45, 48], //Niebla y Neblina cuentan como nublado, son nubes a baja altura
+    lluvioso: [51, 53, 55, 56, 57, 61, 63, 65, 66, 67, 71, 73, 75, 77, 80, 81, 82, 85, 86], //cualquier tipo de agua caida del cielo se considera clima lluvioso
+    tormenta: [95, 96, 99] //el resto de climas a considerar se predeterminan ser tormentas
+}
+
+function totalTemperatura(semana) {
+    let total = 0;
+    for (let i = 0; i < 7; i++) {
+        total += semana[`dia${i+1}`].temperaturaPromedio;
+    }
+    return (total / 7).toFixed(2);
+}
+function totalClima(semana){
+    let objeto = {};
+    for (let i = 0; i < 7; i++) {
+        if (tipoDias.soleado.includes(semana[`dia${i+1}`]['codigoIcono'])){
+            objeto['soleado'] = (objeto['soleado'] || 0) + 1;
+        }
+        else if (tipoDias.nublado.includes(semana[`dia${i+1}`]['codigoIcono'])){
+            objeto['nublado'] = (objeto['nublado'] || 0) + 1;
+        }
+        else if (tipoDias.lluvioso.includes(semana[`dia${i+1}`]['codigoIcono'])){
+            objeto['lluvioso'] = (objeto['lluvioso'] || 0) + 1;
+        }
+        else {
+            objeto['tormenta'] = (objeto['tormenta'] || 0) + 1;
+        }
+    }
+    return Object.keys(objeto).reduce((previo,actual)=> objeto[previo] >= objeto[actual] ? previo : actual)
+    //Si quiero utilizar la ultima llave en vez de la primera, utilizar un "mayor que", no un "mayor o igual que"
+}
+function conseguirMax(semana) {
+    let arreglo = new Array();
+    for (let i = 1; i <= 7; i++){
+        arreglo.push(semana[`dia${i}`]['temperaturaMaxima'])
+    }
+    return Math.max(...arreglo)
+}
+function conseguirMin(semana) {
+    let arreglo = new Array();
+    for (let i = 1; i <= 7; i++){
+        arreglo.push(semana[`dia${i}`]['temperaturaMinima'])
+    }
+    return Math.min(...arreglo)
+}
+function crearResumen(semana) {
+    let ciudadResumen = document.querySelector(`#${semana['nombreCiudad'].replace(/\s/g, '')}`)
+    let resumen = document.createElement('div');
+    ciudadResumen.classList.add('d-flex', 'gap-3', 'flex-column', 'border', 'text-center', 'bg-light');
+    let titulo = document.createElement('div');
+    titulo.textContent = `Resumen meteorologico de ${semana['nombreCiudad']}`;
+    resumen.appendChild(titulo);
+    const tempAvg = document.createElement('div');
+    tempAvg.textContent = `Temperatura Promedio de ${semana['nombreCiudad']}: ${totalTemperatura(semana)}`;
+    resumen.appendChild(tempAvg);
+    const tempMax = document.createElement('div');
+    tempMax.textContent = `Temperatura Maxima: ${conseguirMax(semana)}°C`;
+    resumen.appendChild(tempMax);
+    const tempMin = document.createElement('div');
+    tempMin.textContent = `Temperatura Minima: ${conseguirMin(semana)}°C`;
+    resumen.appendChild(tempMin);
+    const resumenEscrito = document.createElement('div');
+    resumenEscrito.textContent = `El clima es mayormente: ${totalClima(semana)}`;
+    resumen.appendChild(resumenEscrito);
+    ciudadResumen.appendChild(resumen);
+}
+crearResumen(stgoSemana);
+crearResumen(nycSemana);
+crearResumen(losAngelesSemana);
+crearResumen(londresSemana);
+crearResumen(tokioSemana);
+crearResumen(parisSemana);
+crearResumen(singapurSemana);
+crearResumen(hongKongSemana);
+crearResumen(shangaiSemana);
+crearResumen(seulSemana);
