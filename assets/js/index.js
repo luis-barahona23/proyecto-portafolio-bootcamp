@@ -20,9 +20,23 @@ function cicloDia() {
     return "noche"
 }
 async function main() {
-    await Promise.all(arregloCiudades1.map(ciudad => ciudad.fetchCall()));
-    await retrasar(1000);
-    await Promise.all(arregloCiudades2.map(ciudad => ciudad.fetchCall()));
+    const display = document.querySelector("#inicio");
+    const loader = document.createElement('div');
+    loader.id = 'cargador';
+    loader.classList.add('text-center')
+    loader.style.display = 'block';
+    display.prepend(loader)
+    
+    loader.innerText = `Generando datos de clima, espere un momento por favor...`;
+    try {
+        await Promise.all(arregloCiudades1.map(ciudad => ciudad.fetchCall()));
+        await retrasar(1000);
+        await Promise.all(arregloCiudades2.map(ciudad => ciudad.fetchCall()));
+    }catch(error){
+        loader.innerText = `Se ha generado un error ${error}, por favor intentelo de nuevo, refresque la pagina`
+    }finally {
+        loader.style.display = 'none';
+    }
     arregloCiudades1.forEach((ciudad) => console.log(separarNombre(ciudad.resultado)));
     arregloCiudades2.forEach((ciudad) => console.log(separarNombre(ciudad.resultado)));
     console.log(arregloCiudades1[0].resultado)
