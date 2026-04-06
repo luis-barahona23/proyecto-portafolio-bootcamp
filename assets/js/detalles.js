@@ -191,22 +191,27 @@ function totalTemperatura(semana) {
     return (total / 7).toFixed(2);
 }
 function totalClima(semana){
-    let objeto = {};
+    let objeto = {
+        soleado: 0,
+        nublado: 0,
+        lluvioso: 0,
+        tormenta: 0
+    };
     for (let i = 0; i < 7; i++) {
         if (tipoDias.soleado.includes(semana[`dia${i+1}`]['codigoIcono'])){
-            objeto['soleado'] = (objeto['soleado'] || 0) + 1;
+            objeto['soleado'] += 1;
         }
         else if (tipoDias.nublado.includes(semana[`dia${i+1}`]['codigoIcono'])){
-            objeto['nublado'] = (objeto['nublado'] || 0) + 1;
+            objeto['nublado'] += 1;
         }
         else if (tipoDias.lluvioso.includes(semana[`dia${i+1}`]['codigoIcono'])){
-            objeto['lluvioso'] = (objeto['lluvioso'] || 0) + 1;
+            objeto['lluvioso'] += 1;
         }
         else {
-            objeto['tormenta'] = (objeto['tormenta'] || 0) + 1;
+            objeto['tormenta'] +=  1;
         }
     }
-    return Object.keys(objeto).reduce((previo,actual)=> objeto[previo] >= objeto[actual] ? previo : actual)
+    return objeto
     //Si quiero utilizar la ultima llave en vez de la primera, utilizar un "mayor que", no un "mayor o igual que"
 }
 function conseguirMax(semana) {
@@ -224,12 +229,17 @@ function conseguirMin(semana) {
     return Math.min(...arreglo)
 }
 function crearResumen(semana) {
+    const resumenGeneral = totalClima(semana);
+    let breakLine = document.createElement("hr");
+    let climaMaximo = Object.keys(resumenGeneral)
+    .reduce((previo, actual) => resumenGeneral[previo] >= resumenGeneral[actual] ? previo : actual);
     let ciudadResumen = document.querySelector(`#${semana['nombreCiudad'].replace(/\s/g, '')}`)
     let resumen = document.createElement('div');
     ciudadResumen.classList.add('d-flex', 'gap-3', 'flex-column', 'border', 'text-center', 'bg-light');
     let titulo = document.createElement('div');
     titulo.textContent = `Resumen meteorologico de ${semana['nombreCiudad']}`;
     resumen.appendChild(titulo);
+    resumen.appendChild(breakLine.cloneNode(true));
     const tempAvg = document.createElement('div');
     tempAvg.textContent = `Temperatura Promedio de ${semana['nombreCiudad']}: ${totalTemperatura(semana)}`;
     resumen.appendChild(tempAvg);
@@ -239,9 +249,34 @@ function crearResumen(semana) {
     const tempMin = document.createElement('div');
     tempMin.textContent = `Temperatura Minima: ${conseguirMin(semana)}°C`;
     resumen.appendChild(tempMin);
+    resumen.appendChild(breakLine.cloneNode(true));
     const resumenEscrito = document.createElement('div');
-    resumenEscrito.textContent = `El clima es mayormente: ${totalClima(semana)}`;
+    resumenEscrito.textContent = `El clima es mayormente: ${climaMaximo.charAt(0).toUpperCase()  + climaMaximo.slice(1)}`;
     resumen.appendChild(resumenEscrito);
+    const posibleAlerta = document.createElement('div');
+    if (totalTemperatura(semana) > 25) {
+        posibleAlerta.textContent = `Semana de calor inminente: TENER CUIDADO AL SOL!`
+    }
+    else if (totalTemperatura(semana) < 8) {
+        posibleAlerta.textContent = `Semana de frio inminente: PROTEGERSE CON ROPA ADECUADA!`
+    }
+    else {
+        posibleAlerta.textContent = `Semana de temperatura agradable, DISFRUTE!`;
+    }
+    resumen.appendChild(posibleAlerta);
+    resumen.appendChild(breakLine);
+    const diasSoleados = document.createElement('div');
+    diasSoleados.textContent = `Dias soleados: ${resumenGeneral.soleado}`;
+    resumen.appendChild(diasSoleados);
+    const diasNublados = document.createElement('div');
+    diasNublados.textContent = `Dias nublados: ${resumenGeneral.nublado}`;
+    resumen.appendChild(diasNublados);
+    const diasLluviosos = document.createElement('div');
+    diasLluviosos.textContent = `Dias lluviosos: ${resumenGeneral.lluvioso}`;
+    resumen.appendChild(diasLluviosos);
+    const diasTormenta = document.createElement('div');
+    diasTormenta.textContent = `Dias Tormenta: ${resumenGeneral.tormenta}`;
+    resumen.appendChild(diasTormenta);
     ciudadResumen.appendChild(resumen);
 }
 crearResumen(stgoSemana);
